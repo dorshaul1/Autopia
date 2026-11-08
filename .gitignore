@@ -31,3 +31,19 @@ dist/
 # OS files
 .DS_Store
 __MACOSX/
+
+# Dependencies
+node_modules/
+node_modules.bin-*
+**/node_modules/
+
+# Generated files
+dist/
+out/
+build/
+release/
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+__MACOSX/
