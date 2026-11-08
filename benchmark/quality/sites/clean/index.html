@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      html { color-scheme: dark; }
+      body { margin: 0; font-family: Inter, system-ui, sans-serif; color: #f1f5f9; }
+      /* the page background is a fixed gradient layer behind everything, not an ancestor's colour */
+      .sky { position: fixed; inset: 0; z-index: -1; background: linear-gradient(160deg, #0f1720, #1e3a5f 55%, #0b1220); }
+      .card { margin: 16px; padding: 16px; border-radius: 16px; background: rgba(255, 255, 255, 0.08); }
+      .hero { position: relative; padding: 32px 16px; min-height: 200px; }
+      .hero-bg { position: absolute; inset: 0; background: #1e3a5f; z-index: 0; }
+      .hero-content { position: relative; z-index: 1; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+      .visually-hidden { position: absolute !important; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%); height: 1px; width: 1px; overflow: hidden; }
+      form { display: flex; gap: 8px; padding: 16px; }
+      input, button { font: inherit; padding: 10px 12px; min-height: 44px; border-radius: 8px; border: 1px solid #64748b; background: #0b1220; color: #f1f5f9; }
+      button { background: #38bdf8; color: #04232c; border: 0; }
+      .temp { font-size: 64px; font-weight: 700; }
+      p { color: #cbd5e1; }
+    </style>
+  </head>
+  <body>
+    <div class="sky" aria-hidden="true"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content">
+          <h1>Lisbon</h1>
+          <p>Sunny, light breeze</p>
+          <span class="temp">24°</span>
+          <div id="announcer" class="visually-hidden" aria-live="polite">Updated just now</div>
+        </div>
+      </section>
+      <form id="search">
+        <label for="city" class="sr-only">City</label>
+        <input id="city" name="city" autocomplete="off" />
+        <button type="submit">Search</button>
+      </form>
+      <section class="card">
+        <h2>Next days</h2>
+        <ul id="list"></ul>
+      </section>
+    </main>
+    <script>
+      const list = document.getElementById('list')
+      list.innerHTML = ''
+      for (const city of ['Porto', 'Faro']) {
+        const li = document.createElement('li')
+        li.textContent = city
+        list.appendChild(li)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+body { font-family: system-ui, sans-serif; background: #ffffff; color: #333333; }
+.card { max-width: 360px; margin: 48px auto; }
+.hint { color: #595959; }
+label { display: block; margin-top: 12px; font-weight: 600; }
+input { display: block; width: 100%; margin: 4px 0; padding: 10px; border: 1px solid #767676; }
+input:focus-visible, .btn:focus-visible { outline: 3px solid #1a56db; outline-offset: 2px; }
+input::placeholder { color: #6b6b6b; }
+.error { color: #b3261e; min-height: 1em; margin: 0; }
+.btn { background: #1a56db; color: #ffffff; padding: 10px; width: 100%; border: 0; cursor: pointer; }
+.small { color: #595959; font-size: 12px; }

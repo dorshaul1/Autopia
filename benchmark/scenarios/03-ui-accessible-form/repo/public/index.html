@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Join</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Create your account</h1>
+      <p class="hint">It only takes a minute.</p>
+      <form id="signup" novalidate>
+        <input name="displayName" type="text" placeholder="Your name" />
+        <input name="email" type="email" placeholder="Email" />
+        <input name="password" type="password" placeholder="Password (8+ characters)" />
+        <div class="btn" onclick="submitForm()">Sign up</div>
+      </form>
+      <p class="small">By signing up you agree to our terms.</p>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

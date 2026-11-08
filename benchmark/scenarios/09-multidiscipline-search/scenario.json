@@ -1,0 +1,19 @@
+{
+  "id": "09-multidiscipline-search",
+  "title": "Multi-discipline: search across API, UI, tests and docs",
+  "category": "complex",
+  "size": "large",
+  "steps": [
+    {
+      "request": "Add search to the notes app. Backend: `GET /api/notes?q=<text>` returns only the notes whose title or body contains the text, case-insensitively (no q = all notes, as today). Frontend: a search box above the list, with a proper label, that filters the list as you type by calling that endpoint. Add backend tests for search, and a short 'Search' section to the README."
+    }
+  ],
+  "acceptance": [
+    "GET /api/notes?q= filters title/body case-insensitively; no q returns all; POST still works",
+    "UI: labelled search input that calls /api/notes?q=",
+    "New backend tests mention search; npm test passes",
+    "README has a Search section"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 3, "minutes": 20 }
+}

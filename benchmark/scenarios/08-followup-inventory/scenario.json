@@ -1,0 +1,22 @@
+{
+  "id": "08-followup-inventory",
+  "title": "Follow-up request that relies on the previous change",
+  "category": "follow-up",
+  "size": "small",
+  "steps": [
+    {
+      "request": "Add a removeStock(inventory, sku, qty) function to lib/inventory.js that takes stock away, with tests.",
+      "verify": ["npm test", "node --test \"$BENCH_VERIFY/step1.test.mjs\""]
+    },
+    {
+      "request": "Follow-up on the function you just added: removing more than is in stock must throw an InsufficientStockError (export it; it needs sku, requested and available properties) and leave the stock unchanged. Removing zero or a negative quantity should throw a RangeError. Update the tests."
+    }
+  ],
+  "acceptance": [
+    "Step 1: removeStock reduces stock; tests pass",
+    "Step 2: InsufficientStockError (exported, with sku/requested/available), stock unchanged on error, RangeError for qty ≤ 0",
+    "Step-1 behaviour still works after step 2"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/step1.test.mjs\" \"$BENCH_VERIFY/step2.test.mjs\""],
+  "budget": { "usd": 1.5, "minutes": 12 }
+}

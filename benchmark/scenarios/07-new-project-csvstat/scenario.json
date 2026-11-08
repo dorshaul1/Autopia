@@ -1,0 +1,18 @@
+{
+  "id": "07-new-project-csvstat",
+  "title": "New project from a natural-language description",
+  "category": "new-project",
+  "size": "medium",
+  "steps": [
+    {
+      "request": "Build a small Node.js command-line tool called csvstat, with no npm dependencies. `node bin/csvstat.js <file.csv>` reads a CSV file whose first row is a header and prints one line per numeric column, in header order: `<column>: count=<n> mean=<mean> min=<min> max=<max>`, with the mean rounded to 2 decimals and min/max printed as plain numbers. A column is numeric when every non-empty cell in it is a number; skip other columns and ignore empty cells. Quoted fields (which may contain commas and \"\" escaped quotes) must be handled. If the file doesn't exist, print an error to stderr and exit with code 2. Include tests that run with `npm test` and a short README."
+    }
+  ],
+  "acceptance": [
+    "Exact output format on hidden CSV fixtures (quoted fields, empty cells, mixed columns)",
+    "Missing file: stderr message, exit code 2",
+    "npm test passes; README.md exists; no dependencies in package.json"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 2, "minutes": 15 }
+}

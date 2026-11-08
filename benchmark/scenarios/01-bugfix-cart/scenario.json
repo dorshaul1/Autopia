@@ -1,0 +1,19 @@
+{
+  "id": "01-bugfix-cart",
+  "title": "Small bug fix: cart total ignores quantity",
+  "category": "bugfix",
+  "size": "small",
+  "steps": [
+    {
+      "request": "Bug: the cart total is wrong when a line has more than one of an item. Adding two coffees at $3.50 shows a total of $3.50 instead of $7.00. Please fix it and add a regression test."
+    }
+  ],
+  "acceptance": [
+    "cartTotal multiplies each line's price by its quantity",
+    "Totals stay rounded to cents (e.g. 3 x 0.1 = 0.3)",
+    "Existing behaviour (empty cart, single items) unchanged",
+    "A regression test exists and npm test passes"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 1, "minutes": 10 }
+}

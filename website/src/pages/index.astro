@@ -1,0 +1,339 @@
+---
+import { Image } from 'astro:assets'
+import Base from '../layouts/Base.astro'
+import DownloadButton from '../components/DownloadButton.astro'
+import { capabilities, games, offices, requirements, site, smallPrint, story } from '../content/product'
+import { PLATFORMS, megabytes, resolveDownloads } from '../content/releases'
+import world from '../content/world.json'
+
+const shots = import.meta.glob<{ default: ImageMetadata }>('../assets/app/*.png', { eager: true })
+const shot = (name: string) => shots[`../assets/app/${name}.png`].default
+const WIDTHS = [720, 1100, 1500, 2000]
+
+const { primary, downloads, availability, version } = resolveDownloads()
+
+type OfficeId = (typeof offices)[number]['id']
+const zonesOf = (id: OfficeId) => Object.values(world.offices[id].zones)
+const teamOf = (id: OfficeId) => world.team.filter((t) => t.office === id)
+---
+
+<Base>
+  <header class="nav" id="nav">
+    <div class="wrap nav-in">
+      <a class="mark" href="#top" aria-label="Autopia, back to top"><img src="/favicon.png" alt="" width="24" height="24" />AUTOPIA</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#experience">How it goes</a>
+        <a href="#office">The office</a>
+        <a href="#how">What you need</a>
+      </nav>
+      <a class="nav-cta" href="#download">Download</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <h1>A software company that lives on <em>your Mac.</em></h1>
+        <div class="hero-top">
+          <div class="hero-side">
+            <p class="lede">{site.shortPitch}</p>
+          </div>
+          <DownloadButton />
+        </div>
+        <div class="window" id="window" data-lights="night">
+          <!-- recorded from the app: the team on an idle evening, a short loop (a still for reduced motion) -->
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcset="/hero/office-night-still.webp" />
+            <img src="/hero/office-night.webp" width="1792" height="1152" alt="A top-down pixel-art office at night. The team wanders between desks, the kitchen, the lounge and the games corner while Puffy the corgi roams, and AUTOPIA glows on the reception wall." fetchpriority="high" />
+          </picture>
+          <img class="lit-day" id="lit-day" data-src={'/hero/office-day.webp'} data-still="/hero/office-day-still.webp" width="1792" height="1152" alt="" />
+        </div>
+        <div class="sill" id="sill">
+          <button class="puffy" id="puffy" type="button" aria-label="Puffy, the office corgi. Pet him."><span class="puffy-say">Woof!</span></button>
+        </div>
+        <div class="window-bar">
+          <span>The Tech Startup office, rendered by the app.</span>
+          <button class="lights" id="lights" type="button" aria-pressed="true"><i></i>Lights</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="experience" aria-labelledby="story-title">
+      <div class="wrap">
+        <div class="story-head" data-reveal>
+          <span class="label">From a sentence to something you can click</span>
+          <h2 class="display" id="story-title">You bring the idea. <em>They bring it back working</em>, or tell you why it isn’t.</h2>
+        </div>
+        <div class="story-grid">
+          <ol class="steps" id="steps" style="list-style:none;margin:0;padding:0">
+            {
+              story.map((s, i) => (
+                <li class:list={['step', i === 0 && 'on']} data-step={i}>
+                  <span class="label">{s.eyebrow}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.body}</p>
+                  <Image class="step-shot" src={shot(s.shot)} widths={[640, 960]} sizes="(max-width: 960px) 92vw, 1px" format="webp" quality={82} alt={s.alt} loading="lazy" />
+                </li>
+              ))
+            }
+          </ol>
+          <div class="stage" aria-hidden="true">
+            <div class="frame" id="frame">
+              {story.map((s, i) => <Image class:list={[i === 0 && 'on']} src={shot(s.shot)} widths={[900, 1400, 1900]} sizes="62vw" format="webp" quality={84} alt="" loading={i === 0 ? 'eager' : 'lazy'} />)}
+            </div>
+            <p class="stage-note">One real run, from the installer, start to finish in under two minutes. It was a very small request. Larger ones take longer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ledger" aria-labelledby="ledger-title">
+      <div class="wrap ledger-grid">
+        <div class="ledger-head" data-reveal>
+          <span class="label">While you’re not looking</span>
+          <h2 class="display" id="ledger-title">Real tools, real branches, a real paper trail.</h2>
+        </div>
+        <div>
+          {
+            capabilities.map((c, i) => (
+              <article class="entry" data-reveal style={`--d:${i * 0.04}s`}>
+                <h3>{c.title}</h3>
+                <p>{c.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="office" id="office" aria-labelledby="office-title">
+      <div class="wrap">
+        <div class="office-head" data-reveal>
+          <span class="label">The living office</span>
+          <h2 class="display" id="office-title">Work you can <em>see</em>, not a progress bar.</h2>
+          <p class="lede">Every project gets its own company and its own team. When someone’s really working, they’re at their desk, with their real status over their head. A planning kickoff happens in the boardroom. When a result is ready, you’ll hear about it from the front desk.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Offices">
+          {offices.map((o, i) => <button class="tab" role="tab" type="button" id={`tab-${o.id}`} aria-controls={`panel-${o.id}`} aria-selected={i === 0 ? 'true' : 'false'}>{o.name}</button>)}
+        </div>
+        {
+          offices.map((o, i) => (
+            <div class="office-panel" role="tabpanel" id={`panel-${o.id}`} aria-labelledby={`tab-${o.id}`} hidden={i !== 0}>
+              <div class="office-map" data-map>
+                <Image src={shot(`office-${o.id}-day`)} widths={[800, 1200, 1700]} sizes="(max-width: 960px) 92vw, 66vw" format="webp" quality={84} alt={`The ${o.name} office from above, as rendered by the app.`} loading="lazy" />
+                <div class="room-glow" data-glow />
+              </div>
+              <div>
+                <p class="office-line">{o.line}</p>
+                <ul class="rooms">
+                  {zonesOf(o.id).map((z) => (
+                    <li>
+                      <button type="button" data-room={`${(z.x / 56) * 100},${(z.y / 36) * 100},${(z.w / 56) * 100},${(z.h / 36) * 100}`}>
+                        <b>{z.label}</b>
+                        <span>{z.purpose}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="team" style="grid-column:1/-1">
+                {teamOf(o.id).map((t) => (
+                  <div class="person">
+                    <i style={`background-image:url('/${t.file}')`} />
+                    <div>
+                      <b>{t.name.split(' ')[0]}</b>
+                      <span>{t.title}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+        <div class="play">
+          <div class="play-copy" data-reveal>
+            <span class="label">Between tasks</span>
+            <h3>It’s also, frankly, quite a nice place to be.</h3>
+            <p>When nobody’s on real work, they take breaks, chat and get a coffee. That part is just for fun: it runs on your Mac and uses no tokens.</p>
+            <p>You can challenge whoever’s free to a game, arrange the furniture, hang your own picture and put your project’s name on the wall. At the Tech Startup, Puffy the corgi has opinions about all of it.</p>
+          </div>
+          <div class="collage" data-reveal>
+            <figure>
+              <Image src={shot('customize')} widths={[900, 1400]} sizes="(max-width: 960px) 92vw, 60vw" format="webp" quality={82} alt="Customize office: a catalog of plants, lamps and small pieces beside the office." loading="lazy" />
+              <figcaption><b>Customize office</b>Each project keeps its own.</figcaption>
+            </figure>
+            {
+              games.map((g) => (
+                <figure>
+                  <Image src={shot(`game-${g.id}`)} widths={[420, 680]} sizes="(max-width: 960px) 30vw, 20vw" format="webp" quality={80} alt={`${g.name}, a mini-game played over the office.`} loading="lazy" />
+                  <figcaption><b>{g.name}</b>{g.note}</figcaption>
+                </figure>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="how-head" data-reveal>
+          <span class="label">How it actually works</span>
+          <h2 class="display" id="how-title">No servers of ours. <em>Your Mac, your Claude.</em></h2>
+          <p class="lede">Autopia is a desktop app that directs the official Claude Code CLI on your machine. It doesn’t replace it, and it doesn’t ask for your credentials.</p>
+        </div>
+        <div class="chain" data-reveal>
+          <div class="link you"><h3>You</h3><p>Ask, approve, try, accept.</p></div>
+          <div class="link"><h3>Autopia</h3><p>Plans the work, gives each step a teammate and a branch, runs the checks, shows you everything. Stored on your Mac.</p></div>
+          <div class="link"><h3>Claude Code</h3><p>Anthropic’s CLI, signed in with your account. It does the work, and it enforces permissions and policy.</p></div>
+          <div class="link"><h3>Your folder</h3><p>Real files and real git history, in a normal project folder. Keep it even if you stop using Autopia.</p></div>
+        </div>
+        <span class="label" style="display:block;margin-bottom:10px">What you’ll need</span>
+        <div class="need" data-reveal>
+          {requirements.map((r) => <div><b>{r.title}</b><p>{r.body}</p></div>)}
+        </div>
+        <div class="print" data-reveal>
+          <span class="label">The small print, in normal print</span>
+          <h3>What you should know first.</h3>
+          <ul>{smallPrint.map((s) => <li>{s}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="download" id="download" aria-labelledby="download-title">
+      <div class="wrap">
+        <div class="plaque" data-reveal>
+          <h2 id="download-title">{availability === 'none' ? 'Almost open for business.' : 'Open for business.'}</h2>
+          <div class="plaque-body">
+            <div>
+              <DownloadButton linkOnward={false} />
+              {
+                primary ? (
+                  <>
+                    <ol class="steps-install">
+                      <li>Open the {primary.format === 'dmg' ? 'disk image and drag Autopia to Applications' : 'archive and move Autopia to Applications'}.</li>
+                      {!primary.publiclySigned && <li>This build isn’t notarized. macOS will warn you, or refuse to open it, until you allow it in System Settings, Privacy &amp; Security.</li>}
+                      <li>Open it. If Claude Code isn’t set up, Autopia shows you how.</li>
+                    </ol>
+                    <div class="files">
+                      {downloads.map((d) => (
+                        <span>
+                          <a href={d.url} download={d.file}>{d.format.toUpperCase()}</a> {megabytes(d.bytes)} <code title="SHA-256">{d.sha256.slice(0, 16)}…</code>
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <p class="plaque-note">Mac installers build and pass their tests locally, but Autopia hasn’t been signed, notarized or published. When it is, the button above becomes a real download{version ? `, starting from version ${version}` : ''}.</p>
+                )
+              }
+            </div>
+            <div class="platforms" aria-label="Platforms">
+              {PLATFORMS.map((p) => <div class:list={[p.supported && 'yes']}><span>{p.label}</span><span>{p.status}</span></div>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <a class="mark" href="#top" aria-label="Autopia, back to top">AUTOPIA</a>
+      <p class="foot-credit">{site.credit}</p>
+      <p>Autopia isn’t made by or affiliated with Anthropic. Claude and Claude Code are Anthropic’s products, and need your own account.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // navigation gains a backing once there's something behind it
+    const nav = document.getElementById('nav')!
+    const onScroll = () => nav.classList.toggle('scrolled', scrollY > 24)
+    addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+
+    // the lights are the visitor's to play with
+    const win = document.getElementById('window')!
+    const lights = document.getElementById('lights')!
+    // the daytime loop is only fetched the first time someone turns the lights off
+    const day = document.getElementById('lit-day') as HTMLImageElement
+    const setLights = (on: boolean) => {
+      if (!on && !day.getAttribute('src')) day.src = (reduced ? day.dataset.still : day.dataset.src)!
+      win.dataset.lights = on ? 'night' : 'day'
+      lights.setAttribute('aria-pressed', String(on))
+    }
+    lights.addEventListener('click', () => setLights(win.dataset.lights !== 'night'))
+
+    // Puffy: he trots the length of the window, and enjoys being clicked
+    const puffy = document.getElementById('puffy')!
+    const sill = document.getElementById('sill')!
+    const fit = () => sill.style.setProperty('--stage', `${sill.clientWidth}px`)
+    new ResizeObserver(fit).observe(sill)
+    fit()
+    puffy.addEventListener('click', () => {
+      puffy.classList.add('woof')
+      setTimeout(() => puffy.classList.remove('woof'), 900)
+    })
+
+    // the story: the step in the middle of the screen decides what the frame shows
+    const steps = [...document.querySelectorAll<HTMLElement>('[data-step]')]
+    const pictures = [...document.querySelectorAll<HTMLElement>('#frame img')]
+    const show = (i: number) => {
+      steps.forEach((s, k) => s.classList.toggle('on', k === i))
+      pictures.forEach((p, k) => p.classList.toggle('on', k === i))
+    }
+    const watch = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) show(Number((e.target as HTMLElement).dataset.step))
+      },
+      { rootMargin: '-48% 0px -48% 0px' }
+    )
+    steps.forEach((s) => watch.observe(s))
+
+    // office tabs: arrow keys move between them, as tabs should
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>('.tab')]
+    const pick = (tab: HTMLButtonElement) => {
+      const swap = () => {
+        for (const t of tabs) {
+          const on = t === tab
+          t.setAttribute('aria-selected', String(on))
+          t.tabIndex = on ? 0 : -1
+          document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on
+        }
+      }
+      if (!reduced && 'startViewTransition' in document) (document as Document & { startViewTransition(f: () => void): unknown }).startViewTransition(swap)
+      else swap()
+    }
+    tabs.forEach((tab, i) => {
+      tab.tabIndex = i === 0 ? 0 : -1
+      tab.addEventListener('click', () => pick(tab))
+      tab.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
+        if (!d) return
+        const next = tabs[(i + d + tabs.length) % tabs.length]
+        pick(next)
+        next.focus()
+      })
+    })
+
+    // rooms light up on the map when you point at them
+    document.querySelectorAll<HTMLElement>('.office-panel').forEach((panel) => {
+      const glow = panel.querySelector<HTMLElement>('[data-glow]')!
+      panel.querySelectorAll<HTMLButtonElement>('[data-room]').forEach((b) => {
+        const on = () => {
+          const [x, y, w, h] = b.dataset.room!.split(',').map(Number)
+          Object.assign(glow.style, { left: `${x}%`, top: `${y}%`, width: `${w}%`, height: `${h}%` })
+          glow.classList.add('on')
+        }
+        const off = () => glow.classList.remove('on')
+        b.addEventListener('mouseenter', on)
+        b.addEventListener('focus', on)
+        b.addEventListener('click', on)
+        b.addEventListener('mouseleave', off)
+        b.addEventListener('blur', off)
+      })
+    })
+  </script>
+</Base>

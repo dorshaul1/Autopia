@@ -1,0 +1,13 @@
+Recipe Box         Backend API + JSON persistence + c fix $0.27  missing before: 1  after: 1
+      still missing: npm test
+Recipe Box         List + detail pages wired to the A fix $0.26  missing before: 2  after: 0  → avoidable
+Recipe Box         Delete UI, error states, and acces fix $0.17  missing before: 3  after: 0  → avoidable
+Recipe Box         Delete UI, error states, and acces fix $0.16  missing before: 0  after: 0
+Recipe Box         README + full journey verification fix $0.28  missing before: 1  after: 0  → avoidable
+Recipe Box         Add favourites: let me star a reci fix $0.45  missing before: 2  after: 0  → avoidable
+Tiny Node Command- Implement wordcount CLI with tests fix $0.14  missing before: 2  after: 0  → avoidable
+Tiny Static Page   A tiny static web page that shows  fix $0.31  missing before: 0  after: 0
+weather app        Focused repair.                    fix $0.05  missing before: 1  after: 0  → avoidable
+
+9 fix session(s) followed a successful session, $2.09 in total.
+6 of them re-ran checks that the recorded evidence shows had already passed ($1.35, 3.6 agent-minutes).

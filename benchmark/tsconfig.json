@@ -1,0 +1,5 @@
+{
+  "extends": "../tsconfig.node.json",
+  "compilerOptions": { "composite": false, "noEmit": true, "lib": ["ES2023", "DOM"] },
+  "include": ["harness/**/*.ts", "../src/main/claude/**/*.ts", "../src/shared/**/*.ts"]
+}

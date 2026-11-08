@@ -1,0 +1,33 @@
+node_modules/
+out/
+dist/
+*.log
+.DS_Store
+release/
+website/dist/
+website/.astro/
+website/node_modules/
+website/data/releases.json
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Generated files
+release/
+out/
+build/
+dist/
+*.tsbuildinfo
+
+# Secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+
+# OS files
+.DS_Store
+__MACOSX/

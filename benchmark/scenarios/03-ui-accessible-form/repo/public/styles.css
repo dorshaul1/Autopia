@@ -1,0 +1,7 @@
+body { font-family: system-ui, sans-serif; background: #ffffff; color: #333333; }
+.card { max-width: 360px; margin: 48px auto; }
+.hint { color: #aaaaaa; }
+input { display: block; width: 100%; margin: 8px 0; padding: 10px; border: 1px solid #dddddd; outline: none; }
+input::placeholder { color: #bbbbbb; }
+.btn { background: #7fb3ff; color: #ffffff; padding: 10px; text-align: center; cursor: pointer; }
+.small { color: #b0b0b0; font-size: 12px; }

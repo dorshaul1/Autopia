@@ -1,0 +1,110 @@
+{
+  "at": "2026-11-03T11:46:06.206Z",
+  "node": "v25.5.0",
+  "scenarios": [
+    {
+      "scenario": "01-bugfix-cart",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 4226
+    },
+    {
+      "scenario": "02-feature-due-dates",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 12275
+    },
+    {
+      "scenario": "03-ui-accessible-form",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 2587
+    },
+    {
+      "scenario": "04-refactor-report",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 2787
+    },
+    {
+      "scenario": "05-test-coverage-slug",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\"",
+        "node \"$BENCH_VERIFY/mutants.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 14284
+    },
+    {
+      "scenario": "06-build-repair",
+      "initialFails": true,
+      "failing": [
+        "npm run build",
+        "npm test",
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 5875
+    },
+    {
+      "scenario": "07-new-project-csvstat",
+      "initialFails": true,
+      "failing": [
+        "npm test",
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 4000
+    },
+    {
+      "scenario": "08-followup-inventory",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/step1.test.mjs\" \"$BENCH_VERIFY/step2.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 4619
+    },
+    {
+      "scenario": "09-multidiscipline-search",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 3134
+    },
+    {
+      "scenario": "10-recovery-interrupt",
+      "initialFails": true,
+      "failing": [
+        "node --test \"$BENCH_VERIFY/hidden.test.mjs\""
+      ],
+      "solutionPasses": true,
+      "stepsPass": true,
+      "ms": 2793
+    }
+  ]
+}

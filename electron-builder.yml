@@ -1,0 +1,51 @@
+# Local installers. Nothing here publishes anything: `publish: null` until distribution is switched on (docs/DISTRIBUTION.md).
+appId: dev.autopia.desktop
+productName: Autopia
+copyright: Copyright © 2026 Autopia
+artifactName: ${productName}-${version}-${os}-${arch}.${ext}
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - package.json
+  - '!**/*.map'
+asar: true
+asarUnpack:
+  - '**/*.node'
+  - node_modules/@vscode/tree-sitter-wasm/**
+npmRebuild: true
+publish: null
+mac:
+  category: public.app-category.developer-tools
+  icon: build/icon.icns
+  target:
+    - target: dmg
+      arch: [arm64]
+    - target: zip
+      arch: [arm64]
+  # ad-hoc: Apple Silicon won't run an app without a valid signature, and this one needs no certificate.
+  # It is NOT a Developer ID signature: Gatekeeper still warns on other Macs (docs/DISTRIBUTION.md)
+  identity: '-'
+  hardenedRuntime: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+dmg:
+  title: ${productName} ${version}
+# Configured but never built or tested yet: see the platform table in docs/DISTRIBUTION.md
+win:
+  icon: build/icon.png
+  target: [nsis]
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+linux:
+  icon: build/icon.png
+  category: Development
+  target: [AppImage]
+electronFuses:
+  runAsNode: false
+  enableCookieEncryption: false
+  enableNodeOptionsEnvironmentVariable: false
+  enableNodeCliInspectArguments: false
+  onlyLoadAppFromAsar: true

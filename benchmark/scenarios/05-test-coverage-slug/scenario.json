@@ -1,0 +1,18 @@
+{
+  "id": "05-test-coverage-slug",
+  "title": "Test coverage: write a real test suite for an untested module",
+  "category": "tests",
+  "size": "small",
+  "steps": [
+    {
+      "request": "lib/slug.js has no tests at all. Write a thorough test suite for it with node:test (runnable with npm test), covering normal use and the edge cases. Don't change slug.js unless you find a real bug, and tell me if you do."
+    }
+  ],
+  "acceptance": [
+    "npm test runs a real suite and passes",
+    "The suite kills at least 6 of 7 hidden mutants of slug.js (mutation score ≥ 85%)",
+    "slug.js behaviour unchanged"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\"", "node \"$BENCH_VERIFY/mutants.mjs\""],
+  "budget": { "usd": 1.5, "minutes": 12 }
+}

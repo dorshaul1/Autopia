@@ -1,0 +1,20 @@
+{
+  "id": "10-recovery-interrupt",
+  "title": "Recovery: finish correctly after the session is interrupted",
+  "category": "recovery",
+  "size": "medium",
+  "steps": [
+    {
+      "request": "Extend the markdown converter in lib/markdown.js to support unordered lists (lines starting with `- `), inline code (`code`), bold (**text**) and links ([text](url)). Text must stay HTML-escaped (but not inside the tags you generate), and link URLs must be escaped too and only allow http:, https: and relative URLs (anything else, like javascript:, renders as plain text). Add tests for each feature.",
+      "interrupt": { "afterSeconds": 40 }
+    }
+  ],
+  "acceptance": [
+    "The first session is killed after 40 s; the work resumes (same session) and completes",
+    "Lists, inline code, bold, links rendered as specified; escaping preserved; javascript: links not rendered",
+    "Existing headings/paragraph behaviour unchanged; npm test passes",
+    "No leftover partial state (syntax errors, conflict markers, stray temp files)"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 2, "minutes": 15 }
+}

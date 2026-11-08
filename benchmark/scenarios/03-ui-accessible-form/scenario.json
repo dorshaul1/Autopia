@@ -1,0 +1,21 @@
+{
+  "id": "03-ui-accessible-form",
+  "title": "UI improvement: make a sign-up form accessible",
+  "category": "ui",
+  "size": "medium",
+  "steps": [
+    {
+      "request": "The sign-up page (public/index.html) is hard to use with a keyboard or screen reader and hard to read. Please improve it: every field needs a visible label, the submit control must be a real button, validation errors should appear inline next to the field (no alert popups) and be announced to screen readers, keyboard focus must stay visible, and the grey text needs enough contrast (WCAG AA). Keep the field names and the validation rules in public/validate.js the same."
+    }
+  ],
+  "acceptance": [
+    "Each input has an associated <label for>",
+    "Submit is a <button type=submit> inside the form",
+    "No alert(); errors are inline and announced (aria-live / role=alert / aria-describedby)",
+    "No focus outline removed without a visible :focus replacement",
+    "Every text colour in styles.css has ≥ 4.5:1 contrast against white",
+    "Field names and validate.js rules unchanged; npm test passes"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 2, "minutes": 15 }
+}

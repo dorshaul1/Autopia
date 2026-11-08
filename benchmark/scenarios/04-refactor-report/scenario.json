@@ -1,0 +1,19 @@
+{
+  "id": "04-refactor-report",
+  "title": "Safe refactor: split a giant report function",
+  "category": "refactor",
+  "size": "medium",
+  "steps": [
+    {
+      "request": "lib/report.js has grown into one giant function that nobody wants to touch. Refactor it into small, well-named functions (you can split it into modules under lib/report/ if that helps). This is a pure refactor: buildReport's output must stay byte-for-byte identical for every input, and `import { buildReport } from './lib/report.js'` must keep working."
+    }
+  ],
+  "acceptance": [
+    "buildReport output identical to the original for many generated datasets",
+    "Import path lib/report.js still exports buildReport",
+    "No function longer than 40 lines in lib/report.js or lib/report/",
+    "npm test passes"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 2, "minutes": 15 }
+}

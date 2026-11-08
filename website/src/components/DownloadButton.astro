@@ -1,0 +1,34 @@
+---
+// The one place a download action is drawn. With no real file behind it, it's a plain statement, never a link.
+import { megabytes, resolveDownloads } from '../content/releases'
+
+const { linkOnward = true } = Astro.props as { linkOnward?: boolean }
+
+const { primary, availability } = resolveDownloads()
+---
+
+{
+  primary ? (
+    <div data-download-state={availability}>
+      <a class="cta" href={primary.url} download={primary.file}>
+        Download for Mac
+      </a>
+      <span class="cta-note">
+        Version {primary.version}, Apple Silicon, {primary.format.toUpperCase()}, {megabytes(primary.bytes)}.{' '}
+        {availability === 'local' ? 'A local build from this machine, served only by the development server.' : primary.publiclySigned ? 'Signed and notarized.' : 'Not notarized: macOS will warn you.'}
+      </span>
+    </div>
+  ) : (
+    <div data-download-state="none">
+      <div class="cta-off" role="status">
+        Not available to download yet
+        <small>Autopia hasn’t had a public release.</small>
+      </div>
+      {linkOnward && (
+        <span class="cta-note">
+          <a href="#download">What’s built so far, and what you’ll need</a>
+        </span>
+      )}
+    </div>
+  )
+}

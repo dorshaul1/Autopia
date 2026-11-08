@@ -1,0 +1,221 @@
+/* Autopia design tokens: the only place raw values live. Everything else uses these names.
+   See docs/DESIGN_SYSTEM.md. Dark only: the office is a night-lit pixel world and the UI frames it.
+
+   Layers: primitives (--n-*, raw hues) → semantic tokens (what a value is for). Components use the
+   semantic names only. */
+
+:root {
+  color-scheme: dark;
+
+  /* ── Neutral ramp (warm ink: an office at night, lit by lamps) ─────────────────────────── */
+  --n-0: #0b0a08;
+  --n-25: #0e0d0b;
+  --n-50: #12110e;
+  --n-100: #161512;
+  --n-150: #1b1916;
+  --n-175: #1f1d19;
+  --n-200: #25231e;
+  --n-250: #2f2c26;
+  --n-500: #716b60;
+  --n-600: #969084;
+  --n-700: #b0aa9d;
+  --n-800: #cfcabe;
+  --n-900: #f1ede4;
+
+  /* ── Backgrounds and surfaces (back to front) ──────────────────────────────────────────────── */
+  --bg-deep: var(--n-0); /* tooltips, code wells */
+  --bg-app: var(--n-50); /* window, stage */
+  --bg-chrome: var(--n-100); /* command bar, sidebars */
+  --bg-panel: var(--n-150); /* side sheet, full views */
+  --bg-elevated: var(--n-175); /* popovers, menus, dialogs */
+  --bg-raised: var(--n-200); /* cards and bubbles on a panel */
+  --bg-control: var(--n-250); /* solid controls */
+  --bg-sunken: rgba(0, 0, 0, 0.22); /* inputs, wells */
+  --bg-glass: rgba(18, 17, 14, 0.88); /* HUD over the office */
+  --bg-glass-strong: rgba(27, 25, 22, 0.96); /* floating panels over the office */
+  --scrim: rgba(9, 8, 6, 0.6); /* behind dialogs */
+
+  /* Translucent fills over any surface: hover, selected, pressed */
+  --fill-1: rgba(255, 255, 255, 0.03);
+  --fill-2: rgba(255, 255, 255, 0.055);
+  --fill-3: rgba(255, 255, 255, 0.085);
+  --fill-4: rgba(255, 255, 255, 0.12);
+  --fill-5: rgba(255, 255, 255, 0.2);
+  --fill-strong: rgba(255, 255, 255, 0.4);
+
+  /* Shades: shadows and darkening */
+  --shade-1: rgba(0, 0, 0, 0.2);
+  --shade-2: rgba(0, 0, 0, 0.3);
+  --shade-3: rgba(0, 0, 0, 0.45);
+  --shade-4: rgba(0, 0, 0, 0.6);
+
+  /* ── Borders ───────────────────────────────────────────────────────────────────────────────── */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* ── Text (contrast measured on --bg-panel) ────────────────────────────────────────────────── */
+  --text-strong: #ffffff;
+  --text-primary: var(--n-900); /* 15:1 */
+  --text-secondary: var(--n-800); /* 10:1 */
+  --text-muted: var(--n-700); /* ≥6:1 */
+  --text-faint: var(--n-600); /* ≥4.6:1, the floor for readable text */
+  --text-disabled: var(--n-500); /* decorative only, never for content */
+
+  /* ── Accent: reserved for primary actions, focus and live state ────────────────────────────── */
+  --accent: #5ec4c9;
+  --accent-hover: #7fd6da;
+  --accent-press: #3fa6ac;
+  --accent-text: #93e0e3; /* accent-coloured text on dark */
+  --on-accent: #06201f;
+  --accent-faint: rgba(94, 196, 201, 0.07);
+  --accent-soft: rgba(94, 196, 201, 0.12);
+  --accent-muted: rgba(94, 196, 201, 0.2);
+  --accent-line: rgba(94, 196, 201, 0.4);
+  --accent-strong: rgba(94, 196, 201, 0.6);
+
+  /* ── Status: each has a base, a soft fill, a line and readable text on its fill ─────────────── */
+  --ok: #62d6a0;
+  --ok-soft: rgba(98, 214, 160, 0.12);
+  --ok-line: rgba(98, 214, 160, 0.35);
+  --ok-text: #a4eccb;
+  --warn: #f59e5b;
+  --warn-soft: rgba(245, 158, 91, 0.13);
+  --warn-line: rgba(245, 158, 91, 0.38);
+  --warn-text: #ffd3b0;
+  --danger: #f4656f;
+  --danger-soft: rgba(244, 101, 111, 0.12);
+  --danger-line: rgba(244, 101, 111, 0.4);
+  --danger-text: #ffc4c8;
+  --danger-bg: rgba(60, 18, 26, 0.96); /* error toast */
+  --info: #7fb6ff;
+  --info-soft: rgba(127, 182, 255, 0.12);
+  --info-line: rgba(127, 182, 255, 0.38);
+  --info-text: #cfe2ff;
+
+  /* Role tones (who did it), used only for small identity marks: avatar rings, timeline bars */
+  --role-pm: #f7c66b;
+  --role-lead: #7fb6ff;
+  --role-designer: #ff8fb1;
+  --role-tester: #5ee6a8;
+  --role-engineer: #b98cff;
+  --role-pet: #dc8330;
+  --role-code: var(--info);
+  --role-design: #ff8fb1;
+  --role-design-soft: rgba(255, 143, 177, 0.13);
+  --role-qa: var(--ok);
+  --role-ai: #c9b6ff;
+  --role-ai-soft: rgba(201, 182, 255, 0.1);
+  --role-ai-line: rgba(201, 182, 255, 0.35);
+
+  /* Code highlighting (diffs, file viewer) */
+  --syntax-keyword: #c792ea;
+  --syntax-string: #c3e88d;
+  --syntax-number: #f78c6c;
+  --syntax-tag: #f07178;
+  --syntax-attr: #ffcb6b;
+  --syntax-fn: #82aaff;
+
+  /* ── Typography ────────────────────────────────────────────────────────────────────────────── */
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', sans-serif;
+  --font-display: 'New York', ui-serif, 'Iowan Old Style', Georgia, serif; /* product names and page titles: the one voice */
+  --mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+  --pixel: 'Silkscreen', var(--mono); /* office HUD labels only */
+  --text-micro: 8px; /* pixel-font HUD labels (Silkscreen is crisp at 8px steps) */
+  --text-micro-lg: 9px;
+  --text-2xs: 10.5px; /* overlines, counters */
+  --text-xs: 11.5px; /* meta, captions, badges */
+  --text-sm: 12.5px; /* secondary UI, dense lists */
+  --text-base: 13px; /* body, controls */
+  --text-md: 14px; /* emphasized body, card titles */
+  --text-lg: 15px; /* section titles */
+  --text-xl: 18px; /* view titles, dialog titles */
+  --text-2xl: 22px; /* hero numbers */
+  --text-3xl: 24px;
+  --text-display: 34px; /* Home's opening line */
+  --weight-regular: 400;
+  --weight-medium: 550;
+  --weight-semibold: 620;
+  --weight-bold: 680;
+  --leading-tight: 1.25;
+  --leading: 1.45;
+  --leading-relaxed: 1.6;
+  --tracking-overline: 0.08em;
+
+  /* ── Space (4px rhythm) ────────────────────────────────────────────────────────────────────── */
+  --space-0_5: 2px;
+  --space-1: 4px;
+  --space-1_5: 6px;
+  --space-2: 8px;
+  --space-2_5: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ── Shape ─────────────────────────────────────────────────────────────────────────────────── */
+  --radius-xs: 4px; /* tags, kbd, bars */
+  --radius-sm: 6px; /* small controls, menu items, HUD */
+  --radius-md: 8px; /* controls, inputs */
+  --radius-lg: 10px; /* cards, popovers */
+  --radius-xl: 12px; /* large cards, panels */
+  --radius-2xl: 16px; /* dialogs */
+  --radius-pill: 999px;
+
+  /* ── Elevation ─────────────────────────────────────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px var(--shade-2);
+  --shadow-md: 0 8px 24px var(--shade-3);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 30px 80px var(--shade-4);
+  --shadow-float: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 12px 32px rgba(0, 0, 0, 0.42), 0 2px 6px var(--shade-2);
+  --highlight-inset: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+
+  /* ── Controls and icons ────────────────────────────────────────────────────────────────────── */
+  --control-xs: 22px;
+  --control-sm: 26px;
+  --control-md: 30px;
+  --control-lg: 36px;
+  --icon-xs: 11px;
+  --icon-sm: 13px;
+  --icon-md: 15px;
+  --icon-lg: 18px;
+
+  /* ── Focus ─────────────────────────────────────────────────────────────────────────────────── */
+  --focus: var(--accent);
+  --focus-ring: 0 0 0 3px var(--accent-soft);
+
+  /* ── Motion ────────────────────────────────────────────────────────────────────────────────── */
+  --dur-instant: 60ms;
+  --dur-fast: 120ms;
+  --dur-mid: 180ms;
+  --dur-slow: 220ms;
+  --dur-slower: 300ms;
+  --dur-trot-step: 440ms; /* Puffy's legs */
+  --dur-trot-cross: 30s; /* Puffy crossing the welcome picture */
+  --dur-spin: 800ms; /* looping indicators, unaffected by the steps above */
+  --dur-pulse: 1400ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1); /* things arriving */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1); /* things leaving: quick, no lingering */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1); /* things moving within the screen */
+
+  /* ── Layers ────────────────────────────────────────────────────────────────────────────────── */
+  --z-hud: 10;
+  --rail-w: 232px;
+  --rail-w-collapsed: 76px;
+  --z-popover: 40;
+  --z-dialog: 100;
+  --z-toast: 110; /* an error must stay readable above the dialog it came from */
+  --z-tooltip: 1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-mid: 0ms;
+    --dur-slow: 0ms;
+    --dur-slower: 0ms;
+  }
+}

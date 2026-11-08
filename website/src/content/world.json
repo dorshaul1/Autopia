@@ -1,0 +1,387 @@
+{
+ "offices": {
+  "startup": {
+   "name": "Tech Startup",
+   "tagline": "A bright, warm software company",
+   "purpose": "Websites, SaaS products, web apps, APIs and dashboards.",
+   "zones": {
+    "workspace": {
+     "x": 1,
+     "y": 4,
+     "w": 24,
+     "h": 12,
+     "label": "Engineering floor",
+     "purpose": "Engineering desks. Real tasks run here."
+    },
+    "meeting": {
+     "x": 26,
+     "y": 4,
+     "w": 12,
+     "h": 10,
+     "label": "Boardroom",
+     "purpose": "Planning kickoffs with Maya."
+    },
+    "kitchen": {
+     "x": 39,
+     "y": 4,
+     "w": 16,
+     "h": 12,
+     "label": "Kitchen & coffee bar",
+     "purpose": "Coffee, lunch and the occasional hallway decision."
+    },
+    "studio": {
+     "x": 1,
+     "y": 19,
+     "w": 13,
+     "h": 8,
+     "label": "Design studio",
+     "purpose": "Design work, moodboards and the light table."
+    },
+    "lounge": {
+     "x": 1,
+     "y": 27,
+     "w": 14,
+     "h": 8,
+     "label": "Lounge",
+     "purpose": "Quiet breaks between tasks."
+    },
+    "reception": {
+     "x": 16,
+     "y": 18,
+     "w": 16,
+     "h": 17,
+     "label": "Reception",
+     "purpose": "The front door and the AUTOPIA sign."
+    },
+    "focus": {
+     "x": 33,
+     "y": 19,
+     "w": 8,
+     "h": 6,
+     "label": "Focus room",
+     "purpose": "Teammate consultations: design and architecture questions."
+    },
+    "supply": {
+     "x": 33,
+     "y": 26,
+     "w": 8,
+     "h": 9,
+     "label": "Print & supply room",
+     "purpose": "Printer, lockers and supplies."
+    },
+    "booths": {
+     "x": 42,
+     "y": 18,
+     "w": 6,
+     "h": 3,
+     "label": "Phone booths",
+     "purpose": "Private calls."
+    },
+    "play": {
+     "x": 42,
+     "y": 21,
+     "w": 13,
+     "h": 14,
+     "label": "Game corner",
+     "purpose": "Ping-pong, arcade and beanbags."
+    }
+   }
+  },
+  "studio": {
+   "name": "Game Studio",
+   "tagline": "A creative indie game company",
+   "purpose": "2D and 3D games, simulations, management games and interactive experiences.",
+   "zones": {
+    "meeting": {
+     "x": 1,
+     "y": 4,
+     "w": 12,
+     "h": 10,
+     "label": "Greenlight room",
+     "purpose": "Kickoffs and greenlight reviews with the Game Director."
+    },
+    "workspace": {
+     "x": 14,
+     "y": 4,
+     "w": 24,
+     "h": 11,
+     "label": "Dev pit",
+     "purpose": "Gameplay, systems and level work happens here, facing the playtest wall."
+    },
+    "kitchen": {
+     "x": 39,
+     "y": 4,
+     "w": 16,
+     "h": 11,
+     "label": "Snack bar",
+     "purpose": "Snacks, espresso and arguments about frame data."
+    },
+    "studio": {
+     "x": 1,
+     "y": 18,
+     "w": 12,
+     "h": 9,
+     "label": "Concept-art studio",
+     "purpose": "Concept art, sprites and visual effects."
+    },
+    "lounge": {
+     "x": 1,
+     "y": 27,
+     "w": 12,
+     "h": 8,
+     "label": "Couch co-op lounge",
+     "purpose": "Couch co-op breaks and playtests on the big screen."
+    },
+    "focus": {
+     "x": 15,
+     "y": 18,
+     "w": 9,
+     "h": 6,
+     "label": "Level-design war room",
+     "purpose": "Teammate consultations over printed level maps."
+    },
+    "supply": {
+     "x": 15,
+     "y": 25,
+     "w": 9,
+     "h": 10,
+     "label": "Hardware & devkit lab",
+     "purpose": "Devkits, controllers and the 3D printer."
+    },
+    "reception": {
+     "x": 25,
+     "y": 17,
+     "w": 15,
+     "h": 18,
+     "label": "Lobby",
+     "purpose": "The front door and the neon logo wall."
+    },
+    "booths": {
+     "x": 41,
+     "y": 18,
+     "w": 7,
+     "h": 3,
+     "label": "Recording booths",
+     "purpose": "Voice lines, sound effects and private calls."
+    },
+    "play": {
+     "x": 41,
+     "y": 21,
+     "w": 14,
+     "h": 14,
+     "label": "Arcade",
+     "purpose": "Arcade cabinets, air hockey and pinball."
+    }
+   }
+  },
+  "lab": {
+   "name": "AI Lab",
+   "tagline": "A cutting-edge AI research and engineering company",
+   "purpose": "AI-powered products, agents, automation, data pipelines and ML applications.",
+   "zones": {
+    "meeting": {
+     "x": 1,
+     "y": 4,
+     "w": 11,
+     "h": 9,
+     "label": "Review room",
+     "purpose": "Kickoffs and design reviews with the AI Architect."
+    },
+    "workspace": {
+     "x": 13,
+     "y": 4,
+     "w": 26,
+     "h": 11,
+     "label": "Research floor",
+     "purpose": "Model, data and evaluation work, facing the live metrics wall."
+    },
+    "kitchen": {
+     "x": 40,
+     "y": 4,
+     "w": 15,
+     "h": 11,
+     "label": "Café",
+     "purpose": "Coffee, lunch and whiteboard arguments about baselines."
+    },
+    "reception": {
+     "x": 1,
+     "y": 18,
+     "w": 14,
+     "h": 17,
+     "label": "Atrium",
+     "purpose": "The front door, under the AUTOPIA · AI LAB sign."
+    },
+    "studio": {
+     "x": 16,
+     "y": 18,
+     "w": 11,
+     "h": 8,
+     "label": "Data-viz studio",
+     "purpose": "Dashboards, data visualisation and the experimentation bench."
+    },
+    "lounge": {
+     "x": 16,
+     "y": 27,
+     "w": 11,
+     "h": 8,
+     "label": "Library lounge",
+     "purpose": "Reading papers and quiet breaks."
+    },
+    "focus": {
+     "x": 28,
+     "y": 18,
+     "w": 9,
+     "h": 6,
+     "label": "Evaluation room",
+     "purpose": "Teammate consultations over the eval dashboard."
+    },
+    "supply": {
+     "x": 28,
+     "y": 25,
+     "w": 9,
+     "h": 10,
+     "label": "Server room",
+     "purpose": "Server racks, the GPU rig and the printer."
+    },
+    "booths": {
+     "x": 38,
+     "y": 18,
+     "w": 7,
+     "h": 3,
+     "label": "Quiet pods",
+     "purpose": "Calls and deep-focus time."
+    },
+    "play": {
+     "x": 38,
+     "y": 21,
+     "w": 17,
+     "h": 14,
+     "label": "Recreation",
+     "purpose": "Table tennis, chess and the big screen."
+    }
+   }
+  }
+ },
+ "team": [
+  {
+   "file": "team-startup-0.png",
+   "name": "Maya Okafor",
+   "title": "Tech Lead",
+   "office": "startup"
+  },
+  {
+   "file": "team-startup-1.png",
+   "name": "Theo Lindqvist",
+   "title": "Full-Stack Developer",
+   "office": "startup"
+  },
+  {
+   "file": "team-startup-2.png",
+   "name": "Inés Navarro",
+   "title": "UI/UX Designer",
+   "office": "startup"
+  },
+  {
+   "file": "team-startup-3.png",
+   "name": "Kenji Watanabe",
+   "title": "QA Engineer",
+   "office": "startup"
+  },
+  {
+   "file": "team-startup-4.png",
+   "name": "Priya Raman",
+   "title": "Frontend Developer",
+   "office": "startup"
+  },
+  {
+   "file": "team-startup-5.png",
+   "name": "Lucas Moreau",
+   "title": "Backend Developer",
+   "office": "startup"
+  },
+  {
+   "file": "team-studio-6.png",
+   "name": "Yuki Mori",
+   "title": "Game Director",
+   "office": "studio"
+  },
+  {
+   "file": "team-studio-7.png",
+   "name": "Kai Andersen",
+   "title": "Gameplay Programmer",
+   "office": "studio"
+  },
+  {
+   "file": "team-studio-8.png",
+   "name": "Ivy Laurent",
+   "title": "Game Systems Designer",
+   "office": "studio"
+  },
+  {
+   "file": "team-studio-9.png",
+   "name": "Juno Park",
+   "title": "World Designer",
+   "office": "studio"
+  },
+  {
+   "file": "team-studio-10.png",
+   "name": "Tomas Silva",
+   "title": "Level Designer",
+   "office": "studio"
+  },
+  {
+   "file": "team-studio-11.png",
+   "name": "Zara Blake",
+   "title": "Game Artist",
+   "office": "studio"
+  },
+  {
+   "file": "team-studio-12.png",
+   "name": "Luna Ferreira",
+   "title": "Game QA Engineer",
+   "office": "studio"
+  },
+  {
+   "file": "team-lab-13.png",
+   "name": "Ravi Menon",
+   "title": "AI Architect",
+   "office": "lab"
+  },
+  {
+   "file": "team-lab-14.png",
+   "name": "Dev Patel",
+   "title": "AI Engineer",
+   "office": "lab"
+  },
+  {
+   "file": "team-lab-15.png",
+   "name": "Noah Fischer",
+   "title": "ML Engineer",
+   "office": "lab"
+  },
+  {
+   "file": "team-lab-16.png",
+   "name": "Mei Chen",
+   "title": "Data Engineer",
+   "office": "lab"
+  },
+  {
+   "file": "team-lab-17.png",
+   "name": "Iris Varga",
+   "title": "Research Engineer",
+   "office": "lab"
+  },
+  {
+   "file": "team-lab-18.png",
+   "name": "Owen Park",
+   "title": "MLOps Engineer",
+   "office": "lab"
+  },
+  {
+   "file": "team-lab-19.png",
+   "name": "Samir Haddad",
+   "title": "AI Evaluation Engineer",
+   "office": "lab"
+  }
+ ]
+}

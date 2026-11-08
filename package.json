@@ -1,0 +1,53 @@
+{
+  "name": "autopia",
+  "productName": "Autopia",
+  "version": "0.1.0",
+  "description": "A living pixel-art software company that builds real software with Claude Code.",
+  "private": true,
+  "main": "./out/main/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.web.json --noEmit && tsc -p benchmark/tsconfig.json",
+    "test": "vitest run",
+    "rebuild:native": "electron-rebuild -f -w better-sqlite3",
+    "postinstall": "electron-rebuild -f -w better-sqlite3",
+    "bench": "vite-node -c vitest.config.ts benchmark/harness/cli.ts --",
+    "dist:dir": "electron-vite build && electron-builder --dir",
+    "dist:mac": "electron-vite build && electron-builder --mac",
+    "dist:check": "node scripts/check-package.mjs",
+    "release:manifest": "node scripts/release-manifest.mjs",
+    "site:dev": "npm --prefix website run dev",
+    "site:build": "npm --prefix website run build",
+    "site:preview": "npm --prefix website run preview",
+    "icons": "node scripts/make-icon.mjs",
+    "dist:smoke": "node scripts/smoke-package.mjs",
+    "test:first-run": "node scripts/first-run-e2e.mjs"
+  },
+  "dependencies": {
+    "@fontsource/silkscreen": "^5.3.0",
+    "@vscode/tree-sitter-wasm": "^0.3.1",
+    "better-sqlite3": "^13.0.3",
+    "phaser": "^3.90.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.2.1",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0",
+    "electron-vite": "^6.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.3.7",
+    "vitest": "^3.2.7"
+  },
+  "author": "Autopia"
+}

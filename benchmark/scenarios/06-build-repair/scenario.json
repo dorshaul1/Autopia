@@ -1,0 +1,19 @@
+{
+  "id": "06-build-repair",
+  "title": "Failing build repair after a half-finished rename",
+  "category": "build",
+  "size": "small",
+  "steps": [
+    {
+      "request": "`npm run build` is failing. Someone started renaming src/util/strings.js to src/util/text.js (and titleCase to toTitleCase) but didn't finish. Get the build and the tests green again by finishing the rename, not by reverting it."
+    }
+  ],
+  "acceptance": [
+    "npm run build exits 0 and writes dist/api.json",
+    "npm test passes",
+    "src/util/strings.js is gone and nothing imports it or titleCase",
+    "Behaviour of the public API unchanged"
+  ],
+  "verify": ["npm run build", "npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 1, "minutes": 10 }
+}

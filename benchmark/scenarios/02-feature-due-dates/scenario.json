@@ -1,0 +1,20 @@
+{
+  "id": "02-feature-due-dates",
+  "title": "Multi-file feature: due dates for a todo CLI",
+  "category": "feature",
+  "size": "medium",
+  "steps": [
+    {
+      "request": "Add due dates to the todo CLI. `todo add \"Pay rent\" --due 2026-12-01` should store the due date (YYYY-MM-DD). `todo list` should show `(due 2026-12-01)` after the title, and `OVERDUE` at the end of the line for tasks that aren't done and whose due date is before today. Add `todo list --overdue` to show only those overdue tasks. An invalid date (like 2026-13-40 or 'tomorrow') must be rejected: print a message to stderr, exit with code 1, and save nothing. Today's date comes from the TODO_TODAY environment variable (YYYY-MM-DD) when it's set, so it can be tested. Keep the existing commands and output working, and add tests."
+    }
+  ],
+  "acceptance": [
+    "add --due stores a valid YYYY-MM-DD date; invalid dates exit 1 with a stderr message and nothing is saved",
+    "list shows (due DATE) and OVERDUE for undone tasks due before today (TODO_TODAY)",
+    "list --overdue filters to overdue undone tasks",
+    "Tasks without due dates print exactly as before",
+    "npm test passes with new tests"
+  ],
+  "verify": ["npm test", "node --test \"$BENCH_VERIFY/hidden.test.mjs\""],
+  "budget": { "usd": 2, "minutes": 15 }
+}
